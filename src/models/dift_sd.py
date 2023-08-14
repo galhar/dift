@@ -227,5 +227,6 @@ class SDFeaturizer:
             up_ft_indices=[up_ft_index],
             prompt_embeds=prompt_embeds)
         unet_ft = unet_ft_all['up_ft'][up_ft_index] # ensem, c, h, w
+        unet_ft_std = unet_ft.std(0, keepdim=True).mean(1, keepdim=True) # 1,1,h,w, mean of the variance of the features for a specific point
         unet_ft = unet_ft.mean(0, keepdim=True) # 1,c,h,w
-        return unet_ft
+        return unet_ft, unet_ft_std

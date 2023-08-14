@@ -1,4 +1,4 @@
-name: dift
+name: dift_3_9_
 channels:
   - xformers
   - pytorch
